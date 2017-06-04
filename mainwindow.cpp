@@ -19,7 +19,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::remover(const QDir & in)
+void MainWindow::remover(const QDir & in)       // NOT RECUSIVE FOR AVOIDING PROBLEMS
 {
     QDir loc = in;
     QDirIterator it(loc, QDirIterator::Subdirectories);
@@ -37,11 +37,23 @@ void MainWindow::remover(const QDir & in)
 void MainWindow::on_pushButton_clicked()
 {
     countRemove = 0;
-    QDir loc(ui->lineEdit->text().toStdString().c_str());
-    if (loc.exists())
-        remover(loc);
+    if (ui->lineEdit->text().toStdString() == "") { // avoid problems...
+        ui->label_5->setText("INVALID PATH");
+        return;
+    }
+    if (ui->lineEdit_2->text().toStdString() == "") {
+        ui->label_5->setText("INVALID FILE");
+        return;
+    }
 
-    ui->label_5->setText(std::to_string(countRemove).c_str());
+    QDir loc(ui->lineEdit->text().toStdString().c_str());   // creates a QDir for the path
+
+    if (loc.exists()) {
+        remover(loc);
+        ui->label_5->setText(std::to_string(countRemove).c_str());
+    } else {
+        ui->label_5->setText("INVALID PATH");
+    }
 }
 
 void MainWindow::slotAboutQt()

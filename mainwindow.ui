@@ -32,13 +32,13 @@
      <rect>
       <x>20</x>
       <y>20</y>
-      <width>331</width>
+      <width>341</width>
       <height>41</height>
      </rect>
     </property>
     <property name="text">
      <string>This application removes all files with a certain name
- from the entered location</string>
+ from the entered location (including subdirectories as well)</string>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
@@ -94,7 +94,7 @@
      <rect>
       <x>30</x>
       <y>190</y>
-      <width>144</width>
+      <width>181</width>
       <height>19</height>
      </rect>
     </property>
